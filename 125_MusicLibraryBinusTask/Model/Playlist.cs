@@ -1,8 +1,13 @@
-﻿namespace _125_MusicLibraryBinusTask.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace _125_MusicLibraryBinusTask.Model
 {
     public class Playlist
     {
-        public int Id { get; set; }
+        [Key]
+        public int PlaylistId { get; set; }
         public string Name { get; set; }
+        public ICollection<Song>  Songs { get; set; }
+
     }
 }
