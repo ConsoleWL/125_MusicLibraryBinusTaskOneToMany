@@ -11,6 +11,6 @@ namespace _125_MusicLibraryBinusTask.Model
         public string Name { get; set; }
         public ICollection<Song>?  Songs { get; set; }
 
-        // what is the difference between to use ICollection and List<T> 
+        // what is the difference between ICollection and List<T>  and when to use each?
     }
 }
