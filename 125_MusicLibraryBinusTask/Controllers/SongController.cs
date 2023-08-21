@@ -77,6 +77,8 @@ namespace _125_MusicLibraryBinusTask.Controllers
             return Ok(song);
         }
 
+        
+
         [HttpPatch("{id}")]
         public IActionResult UpdatePartialSong(int id, [FromBody] JsonPatchDocument<Song> patchSong)
         {
@@ -142,5 +144,8 @@ namespace _125_MusicLibraryBinusTask.Controllers
 
             return Ok(song);
         }
+
+        //4. Create an endpoint on the SongsController that allows you to add a Song to a
+        // Playlist.One way to do this is to have a PlaylistId passed through the request URL
     }
 }

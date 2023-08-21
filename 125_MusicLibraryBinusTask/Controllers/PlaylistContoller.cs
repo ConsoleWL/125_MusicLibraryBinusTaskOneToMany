@@ -24,6 +24,14 @@ namespace _125_MusicLibraryBinusTask.Controllers
             return Ok(playlists);
         }
 
+        [HttpGet("wsongs")]
+        public IActionResult GetPlaylistsWithSongs()
+        {
+            List<Playlist> playlistWithSongs = _context.Playlists.Include(f => f.Songs)
+                                                      .ToList();
+            return Ok(playlistWithSongs);
+        }
+
         [HttpGet("{id}")]
         public IActionResult GetPlaylist(int id)
         {
