@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace _125_MusicLibraryBinusTask.Model
 {
@@ -6,8 +7,10 @@ namespace _125_MusicLibraryBinusTask.Model
     {
         [Key]
         public int PlaylistId { get; set; }
+        [Required]
         public string Name { get; set; }
-        public ICollection<Song>  Songs { get; set; }
+        public ICollection<Song>?  Songs { get; set; }
 
+        // what is the difference between to use ICollection and List<T> 
     }
 }

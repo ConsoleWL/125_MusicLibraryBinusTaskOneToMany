@@ -60,7 +60,7 @@ namespace _125_MusicLibraryBinusTask.Controllers
             song.Album = newSong.Album;
             song.ReleaseDate = newSong.ReleaseDate;
             song.Genre = newSong.Genre;
-            song.Like = newSong.Like;
+            song.Likes = newSong.Likes;
 
             _context.SaveChanges();
             return Ok(song);
@@ -84,7 +84,7 @@ namespace _125_MusicLibraryBinusTask.Controllers
                 Album = song.Album,
                 ReleaseDate = song.ReleaseDate,
                 Genre = song.Genre,
-                Like = song.Like
+                Likes = song.Likes
             };
 
             // I see a lot ModelState stuff. would be nice to get to know this "Creature" better 
@@ -97,7 +97,7 @@ namespace _125_MusicLibraryBinusTask.Controllers
             song.Album = newSong.Album;
             song.ReleaseDate = newSong.ReleaseDate;
             song.Genre = newSong.Genre;
-            song.Like = newSong.Like;
+            song.Likes = newSong.Likes;
 
             _context.SaveChanges();
 
@@ -126,7 +126,7 @@ namespace _125_MusicLibraryBinusTask.Controllers
             if (song is null)
                 return NotFound();
 
-            song.Like++;
+            song.Likes++;
             _context.SaveChanges();
 
             return Ok(song);

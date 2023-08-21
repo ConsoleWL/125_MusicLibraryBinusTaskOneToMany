@@ -10,12 +10,12 @@ namespace _125_MusicLibraryBinusTask.Model
         public string Title { get; set; }
         public string Artist { get; set; }
         public string Album { get; set; }
-        public DateTime ReleaseDate { get; set; }
+        public DateTime? ReleaseDate { get; set; }
         public string Genre { get; set; }
-        public int Like { get; set; }
+        public int Likes { get; set; } = 0;
 
         [ForeignKey("PlayList")]
-        public int PlaylistId { get; set; }
-        public Playlist Playlist { get; set; }
+        public int? PlaylistId { get; set; }
+        public Playlist? Playlist { get; set; }
     }
 }
