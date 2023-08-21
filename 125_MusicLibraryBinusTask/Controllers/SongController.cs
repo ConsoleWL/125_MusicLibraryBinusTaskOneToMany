@@ -19,14 +19,14 @@ namespace _125_MusicLibraryBinusTask.Controllers
         }
 
         [HttpGet]
-        public IActionResult Song()
+        public IActionResult GetSongs()
         {
             List<Song> songs = _context.Songs.ToList();
             return Ok(songs);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult GetSong(int id)
         {
             Song song = _context.Songs.FirstOrDefault(f => f.Id == id);
 
@@ -48,7 +48,7 @@ namespace _125_MusicLibraryBinusTask.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult SongUpdate(int id, [FromBody] Song newSong)
+        public IActionResult UpdateSong(int id, [FromBody] Song newSong)
         {
             Song? song = _context.Songs.FirstOrDefault(f => f.Id == id);
 
@@ -67,7 +67,7 @@ namespace _125_MusicLibraryBinusTask.Controllers
         }
 
         [HttpPatch("{id}")]
-        public IActionResult SongUpdatePartial(int id, [FromBody] JsonPatchDocument<Song> patchSong)
+        public IActionResult UpdatePartialSong(int id, [FromBody] JsonPatchDocument<Song> patchSong)
         {
             if (patchSong is null)
                 BadRequest();
@@ -119,7 +119,7 @@ namespace _125_MusicLibraryBinusTask.Controllers
         }
 
         [HttpPut("like/{id}")]
-        public IActionResult Like(int id)
+        public IActionResult LikeSong(int id)
         {
             Song? song = _context.Songs.FirstOrDefault(f => f.Id == id);
 
