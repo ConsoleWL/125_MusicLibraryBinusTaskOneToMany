@@ -2,6 +2,7 @@
 using _125_MusicLibraryBinusTask.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
+using Microsoft.EntityFrameworkCore;
 
 namespace _125_MusicLibraryBinusTask.Controllers
 {
@@ -22,6 +23,18 @@ namespace _125_MusicLibraryBinusTask.Controllers
             List<Playlist> playlists = _context.Playlists.ToList();
             return Ok(playlists);
         }
+
+        //[HttpGet("{id}")]
+        //public IActionResult GetPlaylist(int id)
+        //{
+        //    Playlist? playlist = _context.Playlists.SingleOrDefault(f => f.PlaylistId == id);
+
+        //    if (playlist is null)
+        //        return NotFound();
+
+        //    var playlistWithSongs = _context.Playlists
+        //        .Include(f=>f.Songs.)
+        //}
        
     }
 }

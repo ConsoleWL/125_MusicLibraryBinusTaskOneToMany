@@ -3,6 +3,7 @@ using _125_MusicLibraryBinusTask.Model;
 using Azure;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 
 namespace _125_MusicLibraryBinusTask.Controllers
@@ -21,14 +22,20 @@ namespace _125_MusicLibraryBinusTask.Controllers
         [HttpGet]
         public IActionResult GetSongs()
         {
-            List<Song> songs = _context.Songs.ToList();
-            return Ok(songs);
+            List<Song> songsAndPlaylist = _context.Songs
+                .Include(f => f.Playlist) // added  that then i had this error when i tried to get all songs with playlistId
+                                          // Newtonsoft.Json.JsonSerializationException: Self referencing loop detected with type '_125_MusicLibraryBinusTask.Model.Song'. Path '[0].playlist.songs'.0
+                                          // Then I added ReferenceLoopHandling.Ignore; in Program.cs file  and error was gone.
+                                          // but now I'm getting a list of songs in that play list it's probobly  because of that property  public Playlist? Playlist { get; set; } in class Song;
+                .ToList();
+
+            return Ok(songsAndPlaylist);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetSong(int id)
         {
-            Song song = _context.Songs.FirstOrDefault(f => f.Id == id);
+            Song? song = _context.Songs.FirstOrDefault(f => f.Id == id);
 
             if (song is null)
                 return NotFound();
